@@ -1,6 +1,41 @@
 body {
-  margin:0;
-  font-family: sans-serif;
+    margin:0;
+    font-family: sans-serif;
+    color: #ffffff;
+    background-color: #202020;
+}
+
+#landing {
+    z-index: 200;
+    color: #ffffff;
+    background-image: url(./images/qinghe.jpg);
+    background-size:cover;
+    position: fixed;
+    top:0;
+    height: 100vh;
+    width: 100%;
+    transition: all 0.5s ease-in-out;
+    display : flex;
+    align-items : center;
+}
+
+#landing > div {
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #505060;
+    width: 200px;
+    border-radius: 25px;
+    border: 5px solid #f0f0f0;
+}
+
+#landing > div > p{
+    text-align: center;
+}
+
+#landing > div > div{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
 }
 
 #topnav {
@@ -11,7 +46,6 @@ body {
     z-index: 100;
     height: 50px;
     width: 100%;
-    color: #ffffff;
     background-color: #505060;
     display: flex;
     flex-direction: row;
@@ -62,4 +96,11 @@ body {
 .topnav_items:hover{
     text-decoration: underline;
 }*/
+
+
+#planning_output{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
 
