@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Yanyu housing score</title>
+        <link rel="stylesheet" href="main.css">
+    </head>
+     <body>
+        <div id="landing">
+         
+         
+        </div>
+        <div id="topnav">
+            <p>家园积分计划 ver0.01</p>
+            <ul id="topnav_list">
+                <li class="topnav_listitem" data-menuanchor="#warning">注意事项</li>
+                <!--
+                <li class="topnav_listitem" data-menuanchor="#locationSetting">地区设置</li>
+                <li class="topnav_listitem" data-menuanchor="#flooringCalculator">地板计算</li>
+                <li class="topnav_listitem" data-menuanchor="#carpetCalculator">地毯计算</li>
+                -->
+                <li class="topnav_listitem" data-menuanchor="#furnitureCalculator">家具计算</li>   
+                <!--
+                <li class="topnav_listitem" data-menuanchor="#tileCalculator">室外地板计算</li>
+                <li class="topnav_listitem" data-menuanchor="#structureCalculator">室外建筑计算</li>
+                <li class="topnav_listitem" data-menuanchor="#waterCalculator">水上计算</li>
+                -->
+                <li class="topnav_listitem" data-menuanchor="#specialThanks">特别感谢</li>
+            </ul>
+            <audio id="music" src="./sounds/Xomu%20WalpurgisNight.mp3"></audio>
+          <img src="./images/mute.png" onclick="music()" id="music_switch" width="30px" height="30px">
+        </div>
+        
+        <div id="warning">  
+            <br><br>
+            注意事项<br>
+            不同的建筑叠加后具体数值存在一定的误差值<br>
+            目前只有室内家具<br>
+            由于桌子占4个格子的问题，目前先不考虑<br>
+            <a href="https://docs.google.com/spreadsheets/d/17AG3mMhTqT4d3FJLPjTBoPjgkC9_7c4sEM0bDYCXcTw/edit?usp=sharing">求各位大大帮我收集建筑资料</a>
+            <hr>
+        </div>
+         <!--
+         <div id="locationSetting">
+            <p>地区设置 WIP</p>
+        </div>
+        <div id="flooringCalculator">
+            <p>地板计算 WIP</p>
+        </div>
+        <div id="carpetCalculator">
+            <p>地毯计算 WIP</p>
+        </div>
+-->
+        <div id="furnitureCalculator">
+            室内空间: <input id="furnitureSpaceInput" type="number" value="132" style="width: 100px" required>
+                <button onclick="furnitureCalc()">计算</button>
+            <p id="furnitureOutput"></p>
+        <hr></div>
+         <!--
+        <div id="tileCalculator">
+            <p>室外地板计算 WIP</p>
+        </div>
+        <div id="structureCalculator">
+            <p>室外建筑计算 WIP</p>
+        </div>
+        <div id="waterCalculator">
+            <p>水上计算 WIP</p>
+        </div>
+ -->
+        <div id="specialThanks">
+            特殊感谢<br>
+            吸管老師数据提供
+        </div>
+    <footer>
+   <h5>祝各位大侠早日登上家园榜一<br>AAC2T4-1 有空来我家喝茶~ -原味橙汁</h5>
+    </footer>
+        <script src="main.js"></script>
+</body>
+    </body>
