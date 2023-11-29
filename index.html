@@ -10,13 +10,13 @@
             <div>
                 <p>是否开启音乐<p>
                 <div>
-                    <button class="musicbutton" data-musicsetting=true>开启</button>
-                    <button class="musicbutton" data-musicsetting=false>关闭</button>
+                    <button class="musicbutton" data-musicsetting="on">开启</button>
+                    <button class="musicbutton" data-musicsetting="off">关闭</button>
                 </div>
             </div>
         </div>
         <div id="topnav">
-            <p>家园积分计划 ver0.01</p>
+            <p>家园积分计划(施工中) ver0.02</p>
             <ul id="topnav_list">
                 <li class="topnav_listitem" data-menuanchor="#warning">注意事项</li>
                 <li class="topnav_listitem" data-menuanchor="#locationSetting">地区设置</li>
@@ -39,9 +39,11 @@
         <div id="warning">  
             <br><br><br>
             注意事项<br>
-            不同的建筑叠加后具体数值存在一定的误差值<br>
-            目前只有室内家具<br>
-            <a href="https://docs.google.com/spreadsheets/d/17AG3mMhTqT4d3FJLPjTBoPjgkC9_7c4sEM0bDYCXcTw/edit?usp=sharing">求各位大大帮我收集建筑资料</a>
+            用的是wiki上给的数值，具体数值存在一定的误差值，可以拿来做参考。<br>
+            追求极限的完美主义者请再自行做调整<br>
+            目前只有室内资料 <br>
+            <a href="https://docs.google.com/spreadsheets/d/17AG3mMhTqT4d3FJLPjTBoPjgkC9_7c4sEM0bDYCXcTw/edit?usp=sharing">目前我收集到的建筑信息都在这了</a><br>
+            若错误的地方请discord上联系我: OrangeJuice#8072
             <hr>
         </div>
          
@@ -54,22 +56,25 @@
             南洋<input type="radio" onchange="localChange(this);" name="local" value="南洋" /><br>
             地面面积(WIP):<input id="landSpaceInput" type="number" value="368" style="width: 100px" required><br>
             水域面积(WIP):<input id="waterSpaceInput" type="number" value="0" style="width: 100px" required><br>
-            室内空间: <input id="furnitureSpaceInput" type="number" value="132" style="width: 100px" required><br>
+            室内空间: <input id="furnitureSpaceInput" type="number" value="132" style="width: 100px" required>
+            室内地板空间: <input id="flooringSpaceInput" type="number" value="133" style="width: 100px" required><br>
             <button onclick="plan()">规划</button>
         </div>
          <div id="planning_output">
             <div id="flooringCalculator">
-                <h3>地板规划 WIP</h3>
+                <h3>地板规划</h3>
+                <p id="flooringOutput"></p>
             </div>
             <div id="carpetCalculator">
-                <h3>地毯规划 WIP</h3>
+                <h3>地毯规划</h3>
+                <p id="carpetOutput"></p>
             </div>
             <div id="furnitureCalculator">
                 <h3>家具规划</h3>
                 <p id="furnitureOutput"></p>
              </div>
             <div id="tileCalculator">
-                <h3>室外地板规划 WIP</h3>
+                <h3>室外地板规划</h3>
             </div>
             <div id="structureCalculator">
                 <h3>室外建筑规划 WIP</h3>
@@ -81,7 +86,7 @@
         <div id="specialThanks">
             <hr>
             特殊感谢提供建筑数据<br>
-            吸管老師，柳苑大大
+            吸管老師，柳苑大大，嘟嘟魔罗天尊
         </div>
     <footer>
    <h5>祝各位大侠早日登上家园榜一<br>AAC2T4-1 有空来我家喝茶~ -原味橙汁</h5>

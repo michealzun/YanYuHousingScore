@@ -5,6 +5,16 @@ body {
     background-color: #202020;
 }
 
+a:link {
+  color: white;
+  background-color: transparent;
+}
+
+a:visited {
+  color: azure;
+  background-color: transparent;
+}
+
 #landing {
     z-index: 200;
     color: #ffffff;
