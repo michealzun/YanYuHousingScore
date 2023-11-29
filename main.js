@@ -6,7 +6,7 @@ musicBtn.forEach(e => {
         setMusic(e.dataset.musicsetting);});
 });
 function setMusic(mSetting){
-    if(mSetting)music();
+    if(mSetting=="on")music();
     document.querySelector("#landing").style.top="-100%";
 }
 
@@ -120,21 +120,31 @@ const sW15= [4,2,2,0];
 const sW20= [4,2,1,1,0]; 
 const sW30= [3,1,2,0]; 
 const sW60= [1,2,1,0]; 
+
+//structure data
 //家具
-var furnatures = [
-    ["棕木桌",0,sO10,1], //name,pointer, scoring class,space occupide
+var furnatures = [//name,pointer, scoring class,space occupide
+    //休息
+    ["棕木桌",0,sO10,1], 
     ["棕木椅",0,sO10,1],
     ["松木软榻",0,sO10,1],
     ["太阴石",0,sO4,1],
     ["翠竹摇椅",0,sO5,1],
-    ["宗木柜",0,sO10,1],
-    ["仲秋长案",0,sO4,1],
-    ["棕木桌",0,sO1,1],
-    ["棕木烛台",0,sO10,1],
     ["紫玉八仙桌",0,sP5,4],
     ["太师椅",0,sP5,1],
     ["虎皮椅",0,sP5,1],
     ["翅木架子床",0,sP5,1],
+    ["雕花八仙桌",0,sB5,4],
+    ["镶玉圈椅",0,sB5,1],
+    ["罗汉床",0,sB5,1],
+    ["撑尘架子床",0,sB5,1],
+    ["硬木镶石桌",0,sG5,1],
+    ["银纹交椅",0,sG5,1],
+    ["圆凳",0,sG5,1],
+    ["贵妃榻",0,sG5,1],
+    //木几
+    ["宗木柜",0,sO10,1],
+    ["仲秋长案",0,sO4,1],
     ["翡玉架",0,sP1,1],
     ["宝鼎架",0,sP1,1],
     ["宝币架",0,sP1,1],
@@ -145,11 +155,6 @@ var furnatures = [
     ["泰山石敢当",0,sP5,1],
     ["白釉侍女像",0,sP5,1],
     ["狮子滚绣雕",0,sP5,1],
-    ["千里江山屏",0,sP5,1],
-    ["雕花八仙桌",0,sB5,4],
-    ["镶玉圈椅",0,sB5,1],
-    ["罗汉床",0,sB5,1],
-    ["撑尘架子床",0,sB5,1],
     ["网背书架",0,sB10,1],
     ["花纹梳妆台",0,sB10,1],
     ["竹编博古架",0,sB10,1],
@@ -159,14 +164,6 @@ var furnatures = [
     ["清墨书案",0,sB10,1],
     ["文心雕案",0,sB10,1],
     ["园屏楠木",0,sB5,1],
-    ["紫竹雪屏",0,sB20,1],
-    ["金丝依柳屏",0,sB20,1],
-    ["雪梅单屏",0,sB10,1],
-    ["金锣长明灯",0,sB10,1],
-    ["硬木镶石桌",0,sG5,1],
-    ["银纹交椅",0,sG5,1],
-    ["圆凳",0,sG5,1],
-    ["贵妃榻",0,sG5,1],
     ["门书柜",0,sG10,1],
     ["经书柜",0,sG10,1],
     ["典籍柜",0,sG10,1],
@@ -181,24 +178,58 @@ var furnatures = [
     ["便衣架",0,sG10,1],
     ["木制盘匜",0,sG10,1],
     ["松木案",0,sG10,1],
+    //墙围
+    ["千里江山屏",0,sP5,1],
+    ["紫竹雪屏",0,sB20,1],
+    ["金丝依柳屏",0,sB20,1],
+    ["雪梅单屏",0,sB10,1],
     ["松木屏风",0,sG30,1],
+    //光
+    ["棕木烛台",0,sO10,1],
+    ["金锣长明灯",0,sB10,1],
     ["砂笼烛台",0,sG10,1],
     ["铜鹤烛台",0,sG10,1]
 ];
-function furniturePlan(){
-    document.querySelector("#furnitureOutput").innerHTML="";
+
+
+//地板
+var floorings = [//name,pointer, scoring class,space occupide
+    ["棕木地板",0,sO100,1],
+    ["秋竹编席",0,sO100,1], 
+    ["青石方砖",0,sB100,1],
+    ["红木地板",0,sG100,1],
+    ["灰岩方砖",0,sG100,1]
+]
+
+//地毯
+var carpets = [//name,pointer, scoring class,space occupide
+    ["棕木地板",0,sO100,9], 
+    ["青石方砖",0,sB100,9],
+    ["红木地板",0,sG100,4],
+    ["灰岩方砖",0,sG100,9]
+]
+
+function plan(){
+    maximizePoints("#furnitureSpaceInput", "#furnitureOutput",furnatures);
+    maximizePoints("#flooringSpaceInput","#flooringOutput", floorings);
+    maximizePoints("#furnitureSpaceInput","#carpetOutput", carpets);
+}
+
+function maximizePoints(spaceInput,textOutput, structureList){
+        document.querySelector(textOutput).innerHTML="";
     
-    var space = document.querySelector("#furnitureSpaceInput").value;
-    furnatures.forEach(e => e[1]=0);
+    var space = document.querySelector(spaceInput).value;
+    structureList.forEach(e => e[1]=0);
     while(space>0){
-        furnatures.sort(function(a,b){ return (a[2][a[1]]/parseFloat(a[3])) < (b[2][b[1]]/parseFloat(b[3])) ? 1 : -1; });
-        furnatures[0][1]++;
-        space-=furnatures[0][3];
+        structureList.sort(function(a,b){ return (a[2][a[1]]/parseFloat(a[3])) < (b[2][b[1]]/parseFloat(b[3])) ? 1 : -1; });
+        structureList[0][1]++;
+        space-=structureList[0][3];
     }
 
-    furnatures.forEach(e => {
+    structureList.forEach(e => {
         if(e[1]>0){
-            document.querySelector("#furnitureOutput").innerHTML+= e[0] + " x " + e[1] + "<br>";}
+            document.querySelector(textOutput).innerHTML+= e[0] + " x " + e[1] + "<br>";}
         });
 }
+
 
