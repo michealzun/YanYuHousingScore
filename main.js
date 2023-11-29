@@ -81,45 +81,45 @@ function plan(){
 
 
 //得分系统
-const sO1 = [20];               //structure Orange max number 1
-const sO2 = [20,1];                //连续放加两个0分就停止继续放
-const sO4 = [17,3,0,1]              
-const sO5 = [16,3,1]
-const sO10= [12,4,2,1,1,0,1]
-const sO100=[2,2,1,2,1,1,1,1,1,0,1,0,1,0,1]
-const sP1 = [20];               //purple
-const sP2 = [19,3];
-const sP5 = [15,3,2];
-const sP10= [12,4,2,1,1];
-const sP80= [2,2,2,2,1,1,1,1,0,1,0,1,0,1];
-const sB1 = [15];               //blue
-const sB2 = [13,2];
-const sB4 = [8,2]
-const sB5 = [11,2,2];
-const sB10= [9,3,1,1,1];
-const sB20= [6,3,1,2,0,1,1];
-const sB30= [4,3,2,1,1,1,0,1];
-const sB50= [3,2,1,2,1,0,1,1,0,1];
-const sB60= [2,2,2,1,1,1,0,1,0,1,0,1];
-const sB80= [1,3,1,1,0,1,1,1,0,1];
-const sB100=[1,2,1,1,1,0,1,1,0,1];
-const sG1 = [10];              //green
-const sG5 = [7,2,1];
-const sG10= [6,2,1,0,1];
-const sG20= [4,2,1,1,0,1];
-const sG30= [3,1,2,0,1,1];
-const sG40= [2,2,1,1,0,1,0,1];
-const sG50= [2,1,1,1,1,0,1];
-const sG60= [1,2,1,0,1,1];
-const sG80= [1,1,1,1,0,1,0,1];
-const sG100=[1,1,0,1,1];
-const sW1 = [10];                //white
-const sW3 = [8,2]; 
-const sW10= [6,2,1,0,1]; 
-const sW15= [4,2,2,0,1]; 
-const sW20= [4,2,1,1,0,1]; 
-const sW30= [3,1,2,0,1,1]; 
-const sW60= [1,2,1,0,1,1]; 
+const sO1 = [20,-1];               //structure Orange max number 1
+const sO2 = [20,1,-1];                //连续放加两个0分就停止继续放,遇到-1就是完成了
+const sO4 = [17,3,0,1,-1]              
+const sO5 = [16,3,1,-1]
+const sO10= [12,4,2,1,1,0,1,-1]
+const sO100=[2,2,1,2,1,1,1,1,1,0,1,0,1,0,1,-1]
+const sP1 = [20,-1];               //purple
+const sP2 = [19,3,-1];
+const sP5 = [15,3,2,-1];
+const sP10= [12,4,2,1,1,-1];
+const sP80= [2,2,2,2,1,1,1,1,0,1,0,1,0,1,-1];
+const sB1 = [15,-1];               //blue
+const sB2 = [13,2,-1];
+const sB4 = [8,2,-1]
+const sB5 = [11,2,2,-1];
+const sB10= [9,3,1,1,1,-1];
+const sB20= [6,3,1,2,0,1,1,-1];
+const sB30= [4,3,2,1,1,1,0,1,-1];
+const sB50= [3,2,1,2,1,0,1,1,0,1,-1];
+const sB60= [2,2,2,1,1,1,0,1,0,1,0,1,-1];
+const sB80= [1,3,1,1,0,1,1,1,0,1,-1];
+const sB100=[1,2,1,1,1,0,1,1,0,1,-1];
+const sG1 = [10,-1];              //green
+const sG5 = [7,2,1,-1];
+const sG10= [6,2,1,0,1,-1];
+const sG20= [4,2,1,1,0,1,-1];
+const sG30= [3,1,2,0,1,1,-1];
+const sG40= [2,2,1,1,0,1,0,1,-1];
+const sG50= [2,1,1,1,1,0,1,-1];
+const sG60= [1,2,1,0,1,1,-1];
+const sG80= [1,1,1,1,0,1,0,1,-1];
+const sG100=[1,1,0,1,1,-1];
+const sW1 = [10,-1];                //white
+const sW3 = [8,2,-1]; 
+const sW10= [6,2,1,0,1,-1]; 
+const sW15= [4,2,2,0,1,-1]; 
+const sW20= [4,2,1,1,0,1,-1]; 
+const sW30= [3,1,2,0,1,1,-1]; 
+const sW60= [1,2,1,0,1,1,-1]; 
 
 //structure data
 //家具
@@ -219,10 +219,34 @@ var tiles = [//name,pointer, scoring class,space occupide
     ["青石板",0,sG80,1]
 ]
 
+//水域
+var water = [//name,pointer, scoring class,space occupide
+    ["红漆木桥",0,sO10,1], 
+    ["祈福河灯",0,sP10,1],
+    ["潜龙浮雕",0,sP5,4],
+    ["映月石灯",0,sB20,1],
+    ["花岗岩桥",0,sB10,1],
+    ["大浮萍群",0,sB10,4],
+    ["大荷花淀",0,sB10,4],
+    ["大王莲群",0,sB10,4],
+    ["水象石雕",0,sB10,1],
+    ["假山(水)",0,sG20,1],
+    ["荷花水灯",0,sG20,1],
+    ["浮萍群",0,sG20,1],
+    ["荷花淀",0,sG20,1],
+    ["王莲群",0,sG20,1],
+    ["跳石",0,sG20,1],
+    ["松木桥",0,sG20,1],
+    ["碎石桥",0,sG20,1]
+]
+
+
 function plan(){
     maximizePoints("#furnitureSpaceInput", "#furnitureOutput",furnatures);
     maximizePoints("#flooringSpaceInput","#flooringOutput", floorings);
     maximizePoints("#furnitureSpaceInput","#carpetOutput", carpets);
+    maximizePoints("#landSpaceInput","#tileOutput", tiles);
+    maximizePoints("#waterSpaceInput","#waterOutput", water);
 }
 
 function maximizePoints(spaceInput,textOutput, structureList){
@@ -232,7 +256,7 @@ function maximizePoints(spaceInput,textOutput, structureList){
     structureList.forEach(e => e[1]=0);
     while(space>0){
         structureList.sort(function(a,b){ return (a[2][a[1]]/parseFloat(a[3])) < (b[2][b[1]]/parseFloat(b[3])) ? 1 : -1; });
-        if(structureList[0][1]>structureList[0][2].length)break;
+        if(structureList[0][2][structureList[0][1]]==-1)break; //遇到-1了也就是该放的都放了
         structureList[0][1]++;
         space-=structureList[0][3];  
     }
