@@ -20,16 +20,7 @@
             <ul id="topnav_list">
                 <li class="topnav_listitem" data-menuanchor="#warning">注意事项</li>
                 <li class="topnav_listitem" data-menuanchor="#locationSetting">地区设置</li>
-                <!--
-                <li class="topnav_listitem" data-menuanchor="#flooringCalculator">地板规划</li>
-                <li class="topnav_listitem" data-menuanchor="#carpetCalculator">地毯规划</li>
-                -->
-                <li class="topnav_listitem" data-menuanchor="#furnitureCalculator">家具规划</li>   
-                <!--
-                <li class="topnav_listitem" data-menuanchor="#tileCalculator">室外地板规划</li>
-                <li class="topnav_listitem" data-menuanchor="#structureCalculator">室外建筑规划</li>
-                <li class="topnav_listitem" data-menuanchor="#waterCalculator">水上规划</li>
-                -->
+                <li class="topnav_listitem" data-menuanchor="#planningOutput">规划结果</li>   
                 <li class="topnav_listitem" data-menuanchor="#specialThanks">特别感谢</li>
             </ul>
             <audio id="music" src="./sounds/Xomu%20WalpurgisNight.mp3"></audio>
@@ -39,7 +30,7 @@
         <div id="warning">  
             <br><br><br>
             注意事项<br>
-            用的是wiki上给的数值，具体数值存在一定的误差值，可以拿来做参考。<br>
+            用的是wiki上的放置分数值，具体数值存在一定的误差值，可以拿来做参考。<br>
             追求极限的完美主义者请再自行做调整<br>
             目前只有室内资料 <br>
             <a href="https://docs.google.com/spreadsheets/d/17AG3mMhTqT4d3FJLPjTBoPjgkC9_7c4sEM0bDYCXcTw/edit?usp=sharing">目前我收集到的建筑信息都在这了</a><br>
@@ -54,13 +45,13 @@
             江南<input type="radio" onchange="localChange(this);" name="local" value="江南" />
             巴蜀<input type="radio" onchange="localChange(this);" name="local" value="巴蜀" />
             南洋<input type="radio" onchange="localChange(this);" name="local" value="南洋" /><br>
-            地面面积(WIP):<input id="landSpaceInput" type="number" value="368" style="width: 100px" required><br>
-            水域面积(WIP):<input id="waterSpaceInput" type="number" value="0" style="width: 100px" required><br>
-            室内空间: <input id="furnitureSpaceInput" type="number" value="132" style="width: 100px" required>
-            室内地板空间: <input id="flooringSpaceInput" type="number" value="133" style="width: 100px" required><br>
+            地面面积(WIP):<input id="landSpaceInput" type="number" value="368" style="width: 100px" min="0" required><br>
+            水域面积(WIP):<input id="waterSpaceInput" type="number" value="0" style="width: 100px" min="0" required><br>
+            室内空间: <input id="furnitureSpaceInput" type="number" value="132" style="width: 100px" min="0" required>
+            室内地板空间: <input id="flooringSpaceInput" type="number" value="133" style="width: 100px" min="0" required><br>
             <button onclick="plan()">规划</button>
         </div>
-         <div id="planning_output">
+         <div id="planningOutput">
             <div id="flooringCalculator">
                 <h3>地板规划</h3>
                 <p id="flooringOutput"></p>

@@ -108,7 +108,7 @@ a:visited {
 }*/
 
 
-#planning_output{
+#planningOutput{
     display: flex;
     flex-direction: row;
     justify-content: space-between;

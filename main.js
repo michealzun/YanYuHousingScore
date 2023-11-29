@@ -81,45 +81,45 @@ function plan(){
 
 
 //得分系统
-const sO1 = [20,0];               //structure Orange max number 1
-const sO2 = [20,1,0];
-const sO4 = [17,3,0]              //keep going untill we hit a 0
-const sO5 = [16,3,1,0]
-const sO10= [12,4,2,1,1,0]
-const sO100=[2,2,1,2,1,1,1,1,1,1,0]
-const sP1 = [20,0];               //purple
-const sP2 = [19,3,0];
-const sP5 = [15,3,2,0];
-const sP10= [12,4,2,0];
-const sP80= [2,2,2,2,1,1,1,1,0];
-const sB1 = [15,0];               //blue
-const sB2 = [13,2,0];
-const sB4 = [8,2,0]
-const sB5 = [11,2,2,0];
-const sB10= [9,3,1,1,1,0];
-const sB20= [6,3,1,2,0];
-const sB30= [4,3,2,1,1,1,0];
-const sB50= [3,2,1,1,1,0];
-const sB60= [2,2,2,1,1,1,0];
-const sB80= [1,3,1,0];
-const sB100=[1,2,1,1,1,0];
-const sG1 = [10,0];              //green
-const sG5 = [7,2,1,0];
-const sG10= [6,2,1,0];
-const sG20= [4,2,1,1,0];
-const sG30= [3,1,2,0];
-const sG40= [2,2,1,1,0];
-const sG50= [2,1,1,1,1,0];
-const sG60= [1,2,1,0];
-const sG80= [1,1,1,1,0];
-const sG100=[1,1,0];
-const sW1 = [10,0];                //white
-const sW3 = [8,2,0]; 
-const sW10= [6,2,1,0]; 
-const sW15= [4,2,2,0]; 
-const sW20= [4,2,1,1,0]; 
-const sW30= [3,1,2,0]; 
-const sW60= [1,2,1,0]; 
+const sO1 = [20];               //structure Orange max number 1
+const sO2 = [20,1];                //连续放加两个0分就停止继续放
+const sO4 = [17,3,0,1]              
+const sO5 = [16,3,1]
+const sO10= [12,4,2,1,1,0,1]
+const sO100=[2,2,1,2,1,1,1,1,1,0,1,0,1,0,1]
+const sP1 = [20];               //purple
+const sP2 = [19,3];
+const sP5 = [15,3,2];
+const sP10= [12,4,2,1,1];
+const sP80= [2,2,2,2,1,1,1,1,0,1,0,1,0,1];
+const sB1 = [15];               //blue
+const sB2 = [13,2];
+const sB4 = [8,2]
+const sB5 = [11,2,2];
+const sB10= [9,3,1,1,1];
+const sB20= [6,3,1,2,0,1,1];
+const sB30= [4,3,2,1,1,1,0,1];
+const sB50= [3,2,1,2,1,0,1,1,0,1];
+const sB60= [2,2,2,1,1,1,0,1,0,1,0,1];
+const sB80= [1,3,1,1,0,1,1,1,0,1];
+const sB100=[1,2,1,1,1,0,1,1,0,1];
+const sG1 = [10];              //green
+const sG5 = [7,2,1];
+const sG10= [6,2,1,0,1];
+const sG20= [4,2,1,1,0,1];
+const sG30= [3,1,2,0,1,1];
+const sG40= [2,2,1,1,0,1,0,1];
+const sG50= [2,1,1,1,1,0,1];
+const sG60= [1,2,1,0,1,1];
+const sG80= [1,1,1,1,0,1,0,1];
+const sG100=[1,1,0,1,1];
+const sW1 = [10];                //white
+const sW3 = [8,2]; 
+const sW10= [6,2,1,0,1]; 
+const sW15= [4,2,2,0,1]; 
+const sW20= [4,2,1,1,0,1]; 
+const sW30= [3,1,2,0,1,1]; 
+const sW60= [1,2,1,0,1,1]; 
 
 //structure data
 //家具
@@ -203,10 +203,20 @@ var floorings = [//name,pointer, scoring class,space occupide
 
 //地毯
 var carpets = [//name,pointer, scoring class,space occupide
-    ["棕木地板",0,sO100,9], 
-    ["青石方砖",0,sB100,9],
-    ["红木地板",0,sG100,4],
-    ["灰岩方砖",0,sG100,9]
+    ["天华锦纹毯",0,sP5,9], 
+    ["蜀褥毯",0,sB5,9],
+    ["粗制地席",0,sG5,4],
+    ["青鸾毛席",0,sG5,9]
+]
+
+//地砖
+var tiles = [//name,pointer, scoring class,space occupide
+    ["绿苔石板",0,sP80,1], 
+    ["落叶石板",0,sP80,1],
+    ["灰石板",0,sB80,1],
+    ["青石路",0,sG80,1],
+    ["石子路",0,sG80,1],
+    ["青石板",0,sG80,1]
 ]
 
 function plan(){
@@ -222,8 +232,9 @@ function maximizePoints(spaceInput,textOutput, structureList){
     structureList.forEach(e => e[1]=0);
     while(space>0){
         structureList.sort(function(a,b){ return (a[2][a[1]]/parseFloat(a[3])) < (b[2][b[1]]/parseFloat(b[3])) ? 1 : -1; });
+        if(structureList[0][1]>structureList[0][2].length)break;
         structureList[0][1]++;
-        space-=structureList[0][3];
+        space-=structureList[0][3];  
     }
 
     structureList.forEach(e => {
