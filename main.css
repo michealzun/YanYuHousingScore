@@ -1,8 +1,46 @@
+html{
+    cursor:none;
+}
+
 body {
     margin:0;
     font-family: sans-serif;
     color: #ffffff;
     background-color: #202020;
+}
+
+.cursor{
+    pointer-events: none;
+    z-index: 500;
+    background-image: url(./images/cursor.png);
+    background-size:100% 100%;
+    width: 100px;
+    height: 32px;
+    opacity: 80%;
+    position: absolute;
+    animation: cursorBreath 1s infinite alternate;
+}
+
+@keyframes cursorBreath{
+    from{
+        transform: scale(1);
+    }to{
+        transform: scale(0.9);
+    }
+}
+
+.expand{
+    animation: cursorExpand .3s forwards;
+}
+
+@keyframes cursorExpand{
+    from{
+        transform: scale(1);
+        opacity: 80%;
+    }to{
+        transform: scale(2);
+        opacity: 0;
+    }
 }
 
 a:link {
@@ -114,3 +152,15 @@ a:visited {
     justify-content: space-evenly;
 }
 
+.purple{
+    color:#D0C0E0;
+}
+.orange{
+    color:#E0D0B0;
+}
+.blue{
+    color:#C0E0E0;
+}
+.green{
+    color:#B0F0C0;
+}

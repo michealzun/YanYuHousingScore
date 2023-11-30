@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+    <div class="cursor"></div>
     <head>
         <meta charset="utf-8">
         <title>Yanyu housing score</title>
@@ -16,7 +17,7 @@
             </div>
         </div>
         <div id="topnav">
-            <p>家园积分计划(施工中) ver0.02</p>
+            <p>家园积分规划器(施工中) ver0.03</p>
             <ul id="topnav_list">
                 <li class="topnav_listitem" data-menuanchor="#warning">注意事项</li>
                 <li class="topnav_listitem" data-menuanchor="#locationSetting">地区设置</li>
@@ -30,11 +31,10 @@
         <div id="warning">  
             <br><br><br>
             注意事项<br>
-            用的是wiki上的放置分数值，具体数值存在一定的误差值，可以拿来做参考。<br>
-            追求极限的完美主义者请再自行做调整<br>
-            规划器只考虑以下建筑<br>
-            <a href="https://docs.google.com/spreadsheets/d/17AG3mMhTqT4d3FJLPjTBoPjgkC9_7c4sEM0bDYCXcTw/edit?usp=sharing">google sheet链接</a><br>
-            若有遗漏或错误的地方请discord上联系我: OrangeJuice#8072
+            - 用的是wiki上的放置分数值，具体数值存在一定的误差值，可以拿来做参考。追求极限的完美主义者请再自行做调整<br>
+            - 由于wiki上却少很多建筑，这些是我在国际服上测的<a href="https://docs.google.com/spreadsheets/d/17AG3mMhTqT4d3FJLPjTBoPjgkC9_7c4sEM0bDYCXcTw/edit?usp=sharing">google sheet链接</a>如果发现表格错误或建筑缺失请discord上联系我: OrangeJuice#8072<br>
+            - 目前版本默认所有地砖(包括青石路，石子路)上面可以放东西。默认所有地区(包括中原)有地区专属特殊建筑。
+            由于比较麻烦不考虑玩家水域和游廊。作者摆烂中，啥时候有时间再搞。
             <hr>
         </div>
          
@@ -45,7 +45,7 @@
             江南<input type="radio" onchange="localChange(this);" name="local" value="江南" />
             巴蜀<input type="radio" onchange="localChange(this);" name="local" value="巴蜀" />
             南洋<input type="radio" onchange="localChange(this);" name="local" value="南洋" /><br>
-            地面面积:<input id="landSpaceInput" type="number" value="368" style="width: 100px" min="0" required><br>
+            地面面积:<input id="landSpaceInput" type="number" value="368" style="width: 100px" min="0" required>
             水域面积:<input id="waterSpaceInput" type="number" value="0" style="width: 100px" min="0" required><br>
             室内空间: <input id="furnitureSpaceInput" type="number" value="132" style="width: 100px" min="0" required>
             室内地板空间: <input id="flooringSpaceInput" type="number" value="133" style="width: 100px" min="0" required><br>
@@ -53,33 +53,34 @@
         </div>
          <div id="planningOutput">
             <div>
-                <h3>地板规划</h3>
+                <h3>地板</h3>
                 <p id="flooringOutput"></p>
             </div>
             <div>
-                <h3>地毯规划</h3>
+                <h3>地毯</h3>
                 <p id="carpetOutput"></p>
             </div>
             <div>
-                <h3>家具规划</h3>
+                <h3>家具</h3>
                 <p id="furnitureOutput"></p>
              </div>
             <div>
-                <h3>地砖头规划</h3>
+                <h3>地砖</h3>
                 <p id="tileOutput"></p>
             </div>
             <div>
-                <h3>建筑规划 WIP</h3>
+                <h3>建筑</h3>
+                <p id="landStructureOutput"></p>
             </div>
             <div>
-                <h3>水上规划</h3>
+                <h3>水上</h3>
                 <p id="waterOutput"></p>
             </div> 
         </div>
         <div id="specialThanks">
             <hr>
             特殊感谢提供建筑数据<br>
-            吸管老師，柳苑大大，嘟嘟魔罗天尊
+            吸管老師，柳苑大大，嘟嘟魔罗天尊，曹叔
         </div>
     <footer>
    <h5>祝各位大侠早日登上家园榜一<br>AAC2T4-1 有空来我家喝茶~ -原味橙汁</h5>
