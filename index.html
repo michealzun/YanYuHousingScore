@@ -17,7 +17,7 @@
             </div>
         </div>
         <div id="topnav">
-            <p>家园积分规划器(施工中) ver0.03</p>
+            <p>家园积分规划器(施工中) ver0.04</p>
             <ul id="topnav_list">
                 <li class="topnav_listitem" data-menuanchor="#warning">注意事项</li>
                 <li class="topnav_listitem" data-menuanchor="#locationSetting">地区设置</li>
@@ -28,30 +28,53 @@
           <img src="./images/mute.png" onclick="music()" id="music_switch" width="30px" height="30px">
         </div>
         
-        <div id="warning">  
-            <br><br><br>
+        <div id="warning"> 
+            0.04更新内容<br>
+            建筑信息库更新，玩家放置水域分数最大化逻辑，网页外观<br>
             注意事项<br>
-            - 用的是wiki上的放置分数值，具体数值存在一定的误差值，可以拿来做参考。追求极限的完美主义者请再自行做调整<br>
-            - 由于wiki上却少很多建筑，这些是我在国际服上测的<a href="https://docs.google.com/spreadsheets/d/17AG3mMhTqT4d3FJLPjTBoPjgkC9_7c4sEM0bDYCXcTw/edit?usp=sharing">google sheet链接</a>如果发现表格错误或建筑缺失请discord上联系我: OrangeJuice#8072<br>
-            - 目前版本默认所有地砖(包括青石路，石子路)上面可以放东西。默认所有地区(包括中原)有地区专属特殊建筑。
-            由于比较麻烦不考虑玩家水域和游廊。作者摆烂中，啥时候有时间再搞。
+            - 由于wiki上建筑跟国际服的不一样。所有信息都是我自己测的。但是最近更出了一些新建筑我还没解锁，因此缺失一些建筑<br>
+            - <a href="https://docs.google.com/spreadsheets/d/17AG3mMhTqT4d3FJLPjTBoPjgkC9_7c4sEM0bDYCXcTw/edit?usp=sharing">(所有测试结果表格)</a> 如果想帮忙提供建筑信息，或者发现表格信息错误的话请在discord上联系我: OrangeJuice#8072 谢谢<br>
+            - 家宅分数=(外观分+钻研分+放置分)×规模系数。<p style="color:red; display: inline">此网站只考虑放置分</p>因此实际获得的分数存在一定的误差值，可以拿来做参考。追求极限的完美主义者请再自行做调整<br>
+            - 默认所有地砖(包括青石路，石子路)上面可以放东西。
+            - 由于游廊水陆皆可放计算比较麻烦，目前先不考虑。
             <hr>
         </div>
          
          <div id="locationSetting">
             <h3>地区设置</h3>
              住宅地区
-            中原<input type="radio" onchange="localChange(this);" name="local" value="  中原" checked />
-            江南<input type="radio" onchange="localChange(this);" name="local" value="江南" />
-            巴蜀<input type="radio" onchange="localChange(this);" name="local" value="巴蜀" />
-            南洋<input type="radio" onchange="localChange(this);" name="local" value="南洋" /><br>
-            地面面积:<input id="landSpaceInput" type="number" value="368" style="width: 100px" min="0" required>
+            中原<input type="radio" onchange="localChange(this);" name="local" value="中原" checked />|
+            江南<input type="radio" onchange="localChange(this);" name="local" value="江南" />|
+            巴蜀<input type="radio" onchange="localChange(this);" name="local" value="巴蜀" />|
+            南洋<input type="radio" onchange="localChange(this);" name="local" value="南洋" />|
+            大漠<input type="radio" onchange="localChange(this);" name="local" value="大漠" /><br>
+            地面面积:<input id="landSpaceInput" type="number" value="368" style="width: 100px" min="100" required>
             水域面积:<input id="waterSpaceInput" type="number" value="0" style="width: 100px" min="0" required><br>
             室内空间: <input id="furnitureSpaceInput" type="number" value="132" style="width: 100px" min="0" required>
             室内地板空间: <input id="flooringSpaceInput" type="number" value="133" style="width: 100px" min="0" required><br>
             <button onclick="plan()">规划</button>
         </div>
          <div id="planningOutput">
+            <div>
+                <h3>强制建筑</h3>
+                <p id="forcedOutput"></p>
+            </div>
+            <div>
+                <h3>建筑</h3>
+                <p id="landStructureOutput"></p>
+            </div>
+            <div>
+                <h3>地砖</h3>
+                <p id="tileOutput"></p>
+            </div>
+            <div>
+                <h3>水上</h3>
+                <p id="waterOutput"></p>
+            </div> 
+            <div>
+                <h3>家具</h3>
+                <p id="furnitureOutput"></p>
+             </div>
             <div>
                 <h3>地板</h3>
                 <p id="flooringOutput"></p>
@@ -60,26 +83,10 @@
                 <h3>地毯</h3>
                 <p id="carpetOutput"></p>
             </div>
-            <div>
-                <h3>家具</h3>
-                <p id="furnitureOutput"></p>
-             </div>
-            <div>
-                <h3>地砖</h3>
-                <p id="tileOutput"></p>
-            </div>
-            <div>
-                <h3>建筑</h3>
-                <p id="landStructureOutput"></p>
-            </div>
-            <div>
-                <h3>水上</h3>
-                <p id="waterOutput"></p>
-            </div> 
         </div>
         <div id="specialThanks">
             <hr>
-            特殊感谢提供建筑数据<br>
+            感谢各位discord的水友们帮我提供建筑数据<br>
             吸管老師，柳苑大大，嘟嘟魔罗天尊，曹叔，肥貂
         </div>
     <footer>
