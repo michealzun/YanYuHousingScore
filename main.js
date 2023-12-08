@@ -114,6 +114,7 @@ function scoreSelector(color,maxNum){
         case "橙":
             switch(maxNum){
                 case 100:   return [2,2,1,2,1,1,1,1,1,0,1,0,1,0,1,-1];
+                case 20:    return [8,4,2,2,1,1,1,0,1,0,1-1];
                 case 10:    return [12,4,2,1,1,0,1,-1];
                 case 5:     return [16,3,1,-1];
                 case 4:     return [17,3,0,1,-1];
