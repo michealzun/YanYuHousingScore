@@ -161,7 +161,7 @@ function scoreSelector(color,maxNum){
                 case 30:    return [3,1,2,0,1,1,-1];
                 case 20:    return [4,2,1,1,0,1,-1]; 
                 case 15:    return [4,2,2,0,1,-1]; 
-                case 10:    return [6,2,1,0,1,-1]; 
+                case 10:    return [6,2,1,0,1,0,0,0,0,0,-1]; 
                 case 3:     return [8,2,0,-1]; 
                 default:    return [10,-1];  
             }
