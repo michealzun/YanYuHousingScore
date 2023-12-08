@@ -354,7 +354,7 @@ var furnitures = [//家具: name,pointer, color, max number,space occupide
     ["棕木桌",0,"橙",10,1], 
     ["棕木椅",0,"橙",10,1],
     ["松木软榻",0,"橙",10,1],
-    ["太阴石",0,"橙",4,1],
+    ["太阴石摇椅",0,"橙",4,1],
     ["翠竹摇椅",0,"橙",10,1],
     ["紫玉八仙桌",0,"紫",5,4],
     ["太师椅",0,"紫",5,1],
@@ -463,7 +463,7 @@ function plan(){
     results[3]=(maximizePoints(document.querySelector("#waterSpaceInput").value, waterStructures));//3是水上建筑
     results[4]=(maximizePoints(document.querySelector("#furnitureSpaceInput").value, furnitures));//4是家具
     results[5]=(maximizePoints(document.querySelector("#flooringSpaceInput").value,floorings));//5是地板
-    results[6]=(maximizePoints(document.querySelector("#furnitureSpaceInput").value,carpets));//6是地毯
+    results[6]=(maximizePoints(document.querySelector("#furnitureSpaceInput").value*0.6,carpets));//6是地毯，减一些因为无法利用上所有空间
     results=custom100Water(results);//计算剩下的100陆地空间要不要用自定义水域
 
     display(results);
