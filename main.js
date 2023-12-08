@@ -170,9 +170,9 @@ function scoreSelector(color,maxNum){
 
 //structure data
 var mustBuilds=[//强制建筑
-    ["主宅",0,"白",1,6],
-    ["厨房",0,"白",1,6],
-    ["练武场",0,"白",1,6],
+    ["主宅",0,"白",1,7],
+    ["厨房",0,"白",1,7],
+    ["练武场",0,"白",1,7],
     ["池塘",0,"白",1,4],
     ["鸡窝",0,"白",3,1],
     ["羊圈",0,"白",3,1],
@@ -186,10 +186,10 @@ var mustBuildsSpecial=[//地区建筑
 
 var landStructures=[//室外建筑: name,pointer, color, max number,space occupide
     //家宅
-    ["厢房",0,"白",20,2],
+    ["厢房",0,"白",20,3],
     ["农田",0,"白",30,1],
     ["耳房",0,"白",20,1],
-    ["凉亭",0,"白",10,2],
+    ["凉亭",0,"白",10,3],
     //["游廊",0,sW60,1], WIP
     
     //木石
@@ -406,7 +406,7 @@ var furnitures = [//家具: name,pointer, color, max number,space occupide
     ["便衣架",0,"绿",10,1],
     ["木制盘匜",0,"绿",10,1],
     ["松木案",0,"绿",10,1],
-    //["金鸡木雕",0,"绿",？,1],
+    ["金鸡木雕",0,"绿",5,1],
     //墙围
     ["千里江山屏",0,"紫",5,1],
     ["紫竹雪屏",0,"蓝",20,1],
@@ -435,7 +435,7 @@ var carpets = [//name,pointer, color, max number,space occupide
     ["天华锦纹毯",0,"紫",5,9], 
     //["梨花绒毯",0,"蓝",？,？],
     ["蜀褥毯",0,"蓝",5,9],
-    //["翎羽毛毯",0,"蓝",？,？],
+    //["翎羽毛毯",0,"绿",5,？],
     ["粗制地席",0,"绿",5,4],
     ["青鸾毛席",0,"绿",5,9]
 ]
@@ -458,7 +458,7 @@ function plan(){
     var mustbuildBuildings = (homeLocation=="中原") ? mustBuilds : mustBuilds.concat(mustBuildsSpecial);
     var results = [maximizePoints(document.querySelector("#landSpaceInput").value-100,mustbuildBuildings)];//留个100空间(可能)给自定义水域    
     results[1]=(maximizePoints(results[0][0], landStructures)); //1是陆地建筑
-    results[2]=(maximizePoints(document.querySelector("#landSpaceInput").value-100, tiles));//2是外面地板，也留个100空间
+    results[2]=(maximizePoints(results[0][0], tiles));//2是外面地板
     results[3]=(maximizePoints(document.querySelector("#waterSpaceInput").value, waterStructures));//3是水上建筑
     results[4]=(maximizePoints(document.querySelector("#furnitureSpaceInput").value, furnitures));//4是家具
     results[5]=(maximizePoints(document.querySelector("#flooringSpaceInput").value,floorings));//5是地板
