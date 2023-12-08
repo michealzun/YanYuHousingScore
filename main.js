@@ -171,6 +171,7 @@ function scoreSelector(color,maxNum){
 //structure data
 var mustBuilds=[//强制建筑
     ["主宅",0,"白",1,7],
+    ["马厩",0,"白",1,7],
     ["厨房",0,"白",1,7],
     ["练武场",0,"白",1,7],
     ["池塘",0,"白",1,4],
@@ -483,7 +484,7 @@ function maximizePoints(spaceLeft, structureList,points=0){
 
 
 function custom100Water(results){
-    results[0][0]+=100;//剩下的空间
+    results[1][0]+=100;//剩下的空间
 
     results[1][1].sort(function(a,b){ return (scoreSelector(a[2],a[3])[a[1]]/parseFloat(a[4])) < (scoreSelector(b[2],b[3])[b[1]]/parseFloat(b[4])) ? 1 : -1; });
     results[2][1].sort(function(a,b){ return (scoreSelector(a[2],a[3])[a[1]]/parseFloat(a[4])) < (scoreSelector(b[2],b[3])[b[1]]/parseFloat(b[4])) ? 1 : -1; });
@@ -494,7 +495,8 @@ function custom100Water(results){
     var nextWaterScore=scoreSelector(results[3][1][0][2],results[3][1][0][3])[results[3][1][0][1]];
     var nextExWaterScore=scoreSelector(extraWater[0][2],extraWater[0][3])[extraWater[0][1]];
     
-    while(results[0][0]>0){
+    console.log(results[1][0]);
+    while(results[1][0]>0){
         //如果没建筑放了
         if(nextLandScore+nextTileScore+nextWaterScore+nextExWaterScore==-4) break;
         //计算是放陆地东西好还是水上东西好
@@ -515,7 +517,7 @@ function custom100Water(results){
                     nextTileScore=scoreSelector(results[2][1][0][2],results[2][1][0][3])[results[2][1][0][1]];
                 }
             }
-            results[0][0]-=structSize;
+            results[1][0]-=structSize;
         }else{//放水上建筑+水域1
             var structSize=1;
             if(nextWaterScore!=-1){
@@ -525,17 +527,17 @@ function custom100Water(results){
                 results[3][1].sort(function(a,b){ return (scoreSelector(a[2],a[3])[a[1]]/parseFloat(a[4])) < (scoreSelector(b[2],b[3])[b[1]]/parseFloat(b[4])) ? 1 : -1; });
                 nextWaterScore=scoreSelector(results[3][1][0][2],results[3][1][0][3])[results[3][1][0][1]];
             }
-            if(nextExWaterScore!=-1){
-                for (let i = 0; i < structSize && nextExWaterScore!=-1; i++) {
+            for (let i = 0; i < structSize; i++) {
+                extraWater[0][1]++;
+                if(nextExWaterScore!=-1){
                     results[0][3]+=nextExWaterScore;
-                    extraWater[0][1]++;
                     nextExWaterScore=scoreSelector(extraWater[0][2],extraWater[0][3])[extraWater[0][1]];
                 }
             }
-            results[0][0]-=structSize;
+            results[1][0]-=structSize;
         }
     }
-    //results[0][1].push(extraWater);
+    results[1][1]=results[1][1].concat(extraWater);
     return results;
 }
 
@@ -580,3 +582,6 @@ function display(results){
         document.querySelector(outputs[i]).innerHTML+= '<p>放置分: '+ results[i][2] + "</p>";
     }
 }
+
+
+//bug水域不显示，水上建筑不算分
