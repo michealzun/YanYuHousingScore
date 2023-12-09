@@ -108,66 +108,63 @@ function localChange(src) {
 }
 
 
-//得分系统
+//得分系统 needs retesting
 function scoreSelector(color,maxNum){
     switch(color){
         case "橙":
             switch(maxNum){
-                case 100:   return [2,2,1,2,1,1,1,1,1,0,1,0,1,0,1,-1];
-                case 20:    return [8,4,2,2,1,1,1,0,1,0,1-1];
-                case 10:    return [12,4,2,1,1,0,1,-1];
-                case 6:     return [15,3,2,0,1,-1];
-                case 5:     return [16,3,1,-1];
-                case 4:     return [17,3,0,1,-1];
-                case 2:     return [20,1,-1];
-                default:    return [20,-1]; 
+                case 100:   return [5,2,2,2,2,1,2,0,1,1,-1];
+                case 20:    return [15,3,2,2,1,0,1,0,2,0,1-1];
+                case 10:    return [15,5,3,1,2,0,-1];
+                case 6:     return [19,4,3,0,1,-1];
+                case 5:     return [19,4,3,0,1,-1];
+                case 4:     return [22,4,1,-1];
+                case 2:     return [26,1,-1];
+                case 1:     return [13,-1]; 
             }
         case "紫":
             switch(maxNum){
-                case 100:   return [4,3,2,1,2,1,1,1,0,1,0,1,-1];
-                case 80:    return [2,2,2,2,1,1,1,1,0,1,0,1,0,1,-1];
-                case 20:    return [8,4,3,2,1,1,-1];
-                case 10:    return [12,4,2,1,1,-1];
-                case 5:     return [15,3,2,-1];
-                case 2:     return [19,3,-1];
-                default:    return [20,-1];
+                case 100:   return [5,2,4,2,2,1,2,0,1,1,-1];
+                case 80:    return [5,4,2,3,1,2,1,1,2,0,1,0,1,-1];
+                case 20:    return [10,5,4,2,2,1,-1];
+                case 10:    return [15,5,3,1,2,0,1,-1];
+                case 5:     return [19,4,3,-1];
+                case 2:     return [15,3,-1];
+                case 1:     return [26,-1];
+                default:    return [-1];
             }
         case "蓝":
            switch(maxNum){
-                case 100:   return [1,2,1,1,1,0,1,1,0,1,-1];
-                case 80:    return [1,3,1,1,0,1,1,1,0,1,-1];
-                case 60:    return [2,2,2,1,1,1,0,1,0,1,0,1,-1];
-                case 50:    return [3,2,1,2,1,0,1,1,0,1,-1];
-                case 30:    return [4,3,2,1,1,1,0,1,-1];
-                case 20:    return [6,3,1,2,0,1,1,-1];
-                case 10:    return [9,3,1,1,1,-1];
-                case 5:     return [11,2,2,-1];
-                case 4:     return [8,2,-1];
+                case 100:   return [4,3,1,2,1,0,1,2,0,1,-1];
+                case 80:    return [4,3,1,3,1,1,0,1,2,0,1,-1];
+                case 60:    return [4,3,1,3,1,0,1,2,0,1,-1];
+                case 30:    return [6,3,3,1,2,1,0,1,-1];
+                case 20:    return [8,4,1,3,0,1,1,-1];
+                case 10:    return [12,4,1,2,1,-1];
+                case 5:     return [9,3,1,-1];
+                case 4:     return [12,1,-1];
                 case 2:     return [13,2,-1];
-                default:    return [15,-1]; 
             }
         case "绿":
             switch(maxNum){
-                case 100:   return [1,1,0,1,1,-1];
-                case 80:    return [1,1,1,1,0,1,0,1,-1];
-                case 60:    return [1,2,1,0,1,1,-1];
-                case 50:    return [2,1,1,1,1,0,1,-1];
-                case 40:    return [2,2,1,1,0,1,0,1,-1];
-                case 30:    return [3,1,2,0,1,1,-1];
-                case 20:    return [4,2,1,1,0,1,-1];
-                case 10:    return [6,2,1,0,1,-1];
-                case 5:     return [7,2,1,-1];
-                default:    return [10,-1]; 
+                case 100:   return [4,3,1,1,1,2,0,1,-1]; 
+                case 80:    return [3,3,1,0,1,2,0,1,-1];
+                case 60:    return [3,3,1,0,1,2,-1];
+                case 30:    return [4,3,1,2,1,0,1,-1];
+                case 20:    return [6,2,2,2,1,1,-1];
+                case 10:    return [7,3,1,0,2,-1];
+                case 5:     return [10,3,0,1,0,-1];
+                case 1:     return [13,-1]; 
             }
         default://白色
             switch(maxNum){
-                case 60:    return [1,2,1,0,1,1,-1]; 
-                case 30:    return [3,1,2,0,1,1,-1];
-                case 20:    return [4,2,1,1,0,1,-1]; 
-                case 15:    return [4,2,2,0,1,-1]; 
-                case 10:    return [6,2,1,0,1,0,0,0,0,0,-1]; 
-                case 3:     return [8,2,0,-1]; 
-                default:    return [10,-1];  
+                case 60:    return [2,2,1,1,1,0,2,-1]; 
+                case 30:    return [4,1,2,0,2,1,-1];
+                case 20:    return [5,2,2,1,0,1,-1]; 
+                case 10:    return [7,3,1,0,2,0,0,0,0,0,1,-1]; 
+                case 15:    return [2,1,0,2,-1]; 
+                case 3:     return [10,3,0,-1]; 
+                case 1:     return [13,-1];  
             }
     }
 }
@@ -477,6 +474,8 @@ function plan(){
 function maximizePoints(spaceLeft, structureList,points=0){
     while(spaceLeft>0){
         //用分数占地cp sort
+        console.log();
+        structureList.forEach((e) => console.log(e[2] + e[3]));
         structureList.sort(function(a,b){ return (scoreSelector(a[2],a[3])[a[1]]/parseFloat(a[4])) < (scoreSelector(b[2],b[3])[b[1]]/parseFloat(b[4])) ? 1 : -1; });
         if(scoreSelector(structureList[0][2],structureList[0][3])[structureList[0][1]]==-1)break; //遇到-1了也就是放完了
         points+=scoreSelector(structureList[0][2],structureList[0][3])[structureList[0][1]];
@@ -499,7 +498,6 @@ function custom100Water(results){
     var nextWaterScore=scoreSelector(results[3][1][0][2],results[3][1][0][3])[results[3][1][0][1]];
     var nextExWaterScore=scoreSelector(extraWater[0][2],extraWater[0][3])[extraWater[0][1]];
     
-    console.log(results[1][0]);
     while(results[1][0]>0){
         //如果没建筑放了
         if(nextLandScore+nextTileScore+nextWaterScore+nextExWaterScore==-4) break;
