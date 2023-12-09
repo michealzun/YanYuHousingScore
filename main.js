@@ -463,8 +463,8 @@ function plan(){
     results[2]=(maximizePoints(results[0][0], tiles));//2是外面地板
     results[3]=(maximizePoints(document.querySelector("#waterSpaceInput").value, waterStructures));//3是水上建筑
     results[4]=(maximizePoints(document.querySelector("#furnitureSpaceInput").value, furnitures));//4是家具
-    results[5]=(maximizePoints(document.querySelector("#flooringSpaceInput").value,floorings));//5是地板
-    results[6]=(maximizePoints(document.querySelector("#furnitureSpaceInput").value*0.6,carpets));//6是地毯，减一些因为无法利用上所有空间
+    results[5]=(maximizePoints(document.querySelector("#furnitureSpaceInput").value,floorings));//5是地板
+    results[6]=(maximizePoints(document.querySelector("#furnitureSpaceInput").value*0.7,carpets));//6是地毯，减一些因为无法利用上所有空间
     results=custom100Water(results);//计算剩下的100陆地空间要不要用自定义水域
 
     display(results);
